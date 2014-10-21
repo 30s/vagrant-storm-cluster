@@ -17,6 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define opts[:name] do |config|
       config.vm.box = "precise32"
       config.vm.hostname = "storm.%s" % opts[:name].to_s
+      config.vm.network "private_network", ip: opts[:ip]
       config.vm.provider "virtualbox" do |v|
         v.memory = opts[:memory]
         v.cpus = opts[:cpus]
